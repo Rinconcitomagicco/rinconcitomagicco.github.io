@@ -6,17 +6,25 @@
   <style>
     body {
       font-family: "Comic Sans MS", cursive, sans-serif;
-      background: #fff8f0;
+      background: #fffaf3;
       color: #333;
       padding: 20px;
-      max-width: 700px;
+      max-width: 750px;
       margin: auto;
     }
 
     h1 {
       color: #ff69b4;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #6c3a75;
+      font-size: 16px;
     }
 
     .post {
@@ -50,11 +58,38 @@
     .post a:hover {
       background: #e055a2;
     }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+    }
+
+    footer strong {
+      color: #d63384;
+    }
+
+    .icon {
+      font-size: 40px;
+      display: block;
+    }
   </style>
 </head>
 <body>
-  <h1>📰 Novedades de Rinconcito Mágico</h1>
+  <h1><span class="icon">🧚‍♀️</span> Novedades de Rinconcito Mágico</h1>
+  <div class="intro">
+    Bienvenidos al espacio de aprendizaje, juegos y creatividad para niños y niñas de la primera infancia.  
+    Aquí puedes ver todas las publicaciones recientes del sitio.
+  </div>
+
   <div id="feed"></div>
+
+  <footer>
+    <p><strong>Rinconcito Mágico</strong> • Proyecto educativo infantil</p>
+    <p>📧 Contacto: rinconcitomagicco@gmail.com</p>
+    <p>Diseñado por Carolain Nicolle | GitHub Pages ❤️</p>
+  </footer>
 
   <script>
     fetch("https://api.rss2json.com/v1/api.json?rss_url=https://rinconcitomagicco.github.io/rinconcito-rss/rss.xml")
@@ -79,3 +114,6 @@
   </script>
 </body>
 </html>
+    
+
+       
