@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feed - Rinconcito Mágico</title>
+  <style>
+    body {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: #fff8f0;
+      color: #333;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #ff69b4;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .post {
+      background: #fff;
+      border: 2px dashed #ffc0cb;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .post h2 {
+      margin-top: 0;
+      color: #d63384;
+    }
+
+    .post p {
+      margin: 10px 0;
+    }
+
+    .post a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #ff69b4;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .post a:hover {
+      background: #e055a2;
+    }
+  </style>
+</head>
+<body>
+  <h1>📰 Novedades de Rinconcito Mágico</h1>
+  <div id="feed"></div>
+
+  <script>
+    fetch("https://api.rss2json.com/v1/api.json?rss_url=https://rinconcitomagicco.github.io/rinconcito-rss/rss.xml")
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById("feed");
+        data.items.forEach(item => {
+          const post = document.createElement("div");
+          post.className = "post";
+          post.innerHTML = `
+            <h2>${item.title}</h2>
+            <p>${item.description}</p>
+            <a href="${item.link}" target="_blank">Leer más</a>
+          `;
+          container.appendChild(post);
+        });
+      })
+      .catch(err => {
+        document.getElementById("feed").innerHTML = "<p>No se pudo cargar el feed. 😢</p>";
+        console.error("Error al cargar RSS:", err);
+      });
+  </script>
+</body>
+</html>
